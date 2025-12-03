@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: inset 0 0 18px rgba(236, 72, 153, 0.35);
+  }
+  50% {
+    box-shadow: inset 0 0 28px rgba(236, 72, 153, 0.7);
+  }
+}
+
+.animate-glow {
+  animation: glow-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-4000px);
+  }
+}
+
+.animate-scroll {
+  animation: scroll-text 60s linear infinite;
+  will-change: transform;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
