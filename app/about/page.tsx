@@ -111,7 +111,7 @@ export default function AboutPage() {
             </div>
 
             <section>
-              <h2 className="text-lg font-bold text-pink-400 mb-2">
+              <h2 className="text-lg font-bold text-cyan-400 mb-2">
                 What Is $DONUT
               </h2>
               <ul className="space-y-1 text-sm text-gray-300 list-disc list-inside">
@@ -122,7 +122,7 @@ export default function AboutPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-pink-400 mb-2">
+              <h2 className="text-lg font-bold text-cyan-400 mb-2">
                 How Mining Works
               </h2>
               <ul className="space-y-1 text-sm text-gray-300 list-disc list-inside">
@@ -135,7 +135,7 @@ export default function AboutPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-pink-400 mb-2">
+              <h2 className="text-lg font-bold text-cyan-400 mb-2">
                 Revenue Split
               </h2>
               <ul className="space-y-1 text-sm text-gray-300 list-disc list-inside">
@@ -146,7 +146,7 @@ export default function AboutPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-pink-400 mb-2">
+              <h2 className="text-lg font-bold text-cyan-400 mb-2">
                 Emission Schedule
               </h2>
               <ul className="space-y-1 text-sm text-gray-300 list-disc list-inside">
@@ -157,7 +157,7 @@ export default function AboutPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-pink-400 mb-2">
+              <h2 className="text-lg font-bold text-cyan-400 mb-2">
                 Proof of Just-In-Time Stake
               </h2>
               <ul className="space-y-1 text-sm text-gray-300 list-disc list-inside">
@@ -169,7 +169,7 @@ export default function AboutPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-pink-400 mb-2">
+              <h2 className="text-lg font-bold text-cyan-400 mb-2">
                 Treasury
               </h2>
               <ul className="space-y-1 text-sm text-gray-300 list-disc list-inside">
@@ -179,14 +179,14 @@ export default function AboutPage() {
             </section>
 
             <section className="pb-4">
-              <h2 className="text-lg font-bold text-pink-400 mb-2">
+              <h2 className="text-lg font-bold text-cyan-400 mb-2">
                 Builder Codes
               </h2>
               <ul className="space-y-1 text-sm text-gray-300 list-disc list-inside">
                 <li>Anyone can host their own Donut Shop by deploying a frontend</li>
                 <li>Add your builder code to earn 5% of all purchases made through your shop</li>
                 <li>The protocol will launch with two official Donut Shops:</li>
-                <li className="pl-6 list-none">- GlazeCorp by @heesh</li>
+                <li className="pl-6 list-none">- The Daily Glaze by @heesh</li>
                 <li className="pl-6 list-none">- Pinky Glazer by @bigbroc</li>
               </ul>
             </section>

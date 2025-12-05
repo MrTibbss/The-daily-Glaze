@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   content: [
@@ -7,7 +8,13 @@ const config: Config = {
     "./lib/**/*.{ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      // Map the `pink` palette to Tailwind's `cyan` palette so existing
+      // `pink-*` classes render as cyan without changing every source file.
+      colors: {
+        pink: colors.cyan,
+      },
+    },
   },
 };
 

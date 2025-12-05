@@ -391,127 +391,208 @@ export default function BlazeryPage() {
   return (
     <main className="flex h-screen w-screen justify-center overflow-hidden bg-black font-mono text-white">
       <div
-        className="relative flex h-full w-full max-w-[520px] flex-1 flex-col overflow-hidden rounded-[28px] bg-black px-2 pb-4 shadow-inner"
+        className="relative flex h-full w-full max-w-[520px] flex-1 flex-col overflow-hidden rounded-[28px] bg-black px-3 pb-4 shadow-inner"
         style={{
-          paddingTop: "calc(env(safe-area-inset-top, 0px) + 8px)",
+          paddingTop: "calc(env(safe-area-inset-top, 0px) + 12px)",
           paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 80px)",
         }}
       >
-        <div className="flex flex-1 flex-col overflow-hidden">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold tracking-wide">BLAZERY</h1>
+        <div className="flex flex-1 flex-col overflow-y-auto scrollbar-hide">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-4 sticky top-0 bg-black pb-2 z-10">
+            <h1 className="text-xl font-bold tracking-wide text-cyan-400">BLAZERNOMICS</h1>
             {context?.user ? (
-              <div className="flex items-center gap-2 rounded-full bg-black px-3 py-1">
-                <Avatar className="h-8 w-8 border border-zinc-800">
+              <div className="flex items-center gap-2 rounded-lg bg-zinc-900/50 border border-cyan-600/20 px-2 py-1">
+                <Avatar className="h-6 w-6 border border-cyan-600/30">
                   <AvatarImage
                     src={userAvatarUrl || undefined}
                     alt={userDisplayName}
                     className="object-cover"
                   />
-                  <AvatarFallback className="bg-zinc-800 text-white">
+                  <AvatarFallback className="bg-zinc-800 text-white text-xs">
                     {initialsFrom(userDisplayName)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="leading-tight text-left">
-                  <div className="text-sm font-bold">{userDisplayName}</div>
-                  {userHandle ? (
-                    <div className="text-xs text-gray-400">{userHandle}</div>
-                  ) : null}
+                  <div className="text-xs font-bold">{userDisplayName}</div>
                 </div>
               </div>
             ) : null}
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-2">
-            <Card className="border-pink-500 bg-black">
-              <CardContent className="grid gap-1.5 p-2.5">
-                <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-gray-400">
-                  PAY
+          {/* Protocol Info Section */}
+          <Card className="mb-3 border-cyan-600/30 bg-zinc-950/50">
+            <CardContent className="p-3">
+              <div className="flex items-start justify-between mb-2">
+                <div>
+                  <div className="text-xs uppercase tracking-wider text-cyan-400 font-bold mb-1">
+                    Treasury Burn Protocol
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    Auction LP tokens to burn DONUT-WETH liquidity. Treasury revenue drives buybacks, increasing scarcity.
+                  </p>
                 </div>
-                <div className="text-2xl font-semibold text-pink-400">
-                  {auctionPriceDisplay} LP
-                </div>
-                <div className="text-xs text-gray-400">
-                  $
-                  {auctionState
-                    ? (
-                        Number(formatEther(auctionState.price)) *
-                        Number(formatEther(auctionState.paymentTokenPrice)) *
-                        ethUsdPrice
-                      ).toFixed(2)
-                    : "0.00"}
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </CardContent>
+          </Card>
 
-            <Card className="border-zinc-800 bg-black">
-              <CardContent className="grid gap-1.5 p-2.5">
-                <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-gray-400">
-                  GET
-                </div>
-                <div className="text-2xl font-semibold text-white">
-                  Ξ{claimableDisplay}
-                </div>
-                <div className="text-xs text-gray-400">
-                  $
-                  {auctionState
-                    ? (
-                        Number(formatEther(auctionState.wethAccumulated)) * ethUsdPrice
-                      ).toFixed(2)
-                    : "0.00"}
+          {/* Current Auction Stats */}
+          <div className="mb-3">
+            <div className="text-xs uppercase tracking-wider text-gray-400 font-bold mb-2 px-1">
+              Current Auction
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <Card className="border-cyan-600/40 bg-gradient-to-br from-cyan-950/20 to-black">
+                <CardContent className="p-2.5">
+                  <div className="text-[9px] font-bold uppercase tracking-wider text-cyan-400/70 mb-1">
+                    Auction Price
+                  </div>
+                  <div className="text-xl font-bold text-cyan-400 mb-0.5">
+                    {auctionPriceDisplay}
+                  </div>
+                  <div className="text-[10px] text-gray-500">
+                    LP TOKENS
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">
+                    ≈ $
+                    {auctionState
+                      ? (
+                          Number(formatEther(auctionState.price)) *
+                          Number(formatEther(auctionState.paymentTokenPrice)) *
+                          ethUsdPrice
+                        ).toFixed(2)
+                      : "0.00"}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-cyan-600/30 bg-zinc-950/50">
+                <CardContent className="p-2.5">
+                  <div className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">
+                    Claimable Rewards
+                  </div>
+                  <div className="text-xl font-bold text-white mb-0.5">
+                    Ξ{claimableDisplay}
+                  </div>
+                  <div className="text-[10px] text-gray-500">
+                    WETH
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">
+                    ≈ $
+                    {auctionState
+                      ? (
+                          Number(formatEther(auctionState.wethAccumulated)) * ethUsdPrice
+                        ).toFixed(2)
+                      : "0.00"}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Your Position */}
+          <div className="mb-3">
+            <div className="text-xs uppercase tracking-wider text-gray-400 font-bold mb-2 px-1">
+              Your Position
+            </div>
+            <Card className="border-zinc-700/50 bg-zinc-950/30">
+              <CardContent className="p-2.5">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-[10px] text-gray-400 mb-0.5">LP Balance</div>
+                    <div className="text-sm font-bold text-white">
+                      {address && auctionState?.paymentTokenBalance
+                        ? formatEth(auctionState.paymentTokenBalance, 4)
+                        : "0"}
+                    </div>
+                  </div>
+                  <a
+                    href="https://app.uniswap.org/explore/pools/base/0xD1DbB2E56533C55C3A637D13C53aeEf65c5D5703"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold transition-colors border border-cyan-600/30 rounded px-2 py-1"
+                  >
+                    Get LP →
+                  </a>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          <div className="mt-4 flex flex-col gap-2">
+          {/* Profit/Loss Analysis */}
+          {blazeProfitLoss && (
+            <div className="mb-3">
+              <Card className={cn(
+                "border",
+                blazeProfitLoss.isProfitable 
+                  ? "border-green-600/40 bg-green-950/20" 
+                  : "border-red-600/40 bg-red-950/20"
+              )}>
+                <CardContent className="p-2.5">
+                  <div className="flex items-start gap-2">
+                    <div className="text-lg">
+                      {blazeProfitLoss.isProfitable ? "💰" : "⚠️"}
+                    </div>
+                    <div className="flex-1">
+                      <div className={cn(
+                        "text-xs font-bold mb-1",
+                        blazeProfitLoss.isProfitable ? "text-green-400" : "text-red-400"
+                      )}>
+                        {blazeProfitLoss.isProfitable ? "PROFITABLE TRADE" : "UNPROFITABLE TRADE"}
+                      </div>
+                      <div className="text-[11px] text-gray-400 leading-relaxed">
+                        {blazeProfitLoss.isProfitable ? (
+                          <>
+                            Receive ${blazeProfitLoss.wethValueInUsd.toFixed(2)} WETH for ${blazeProfitLoss.lpValueInUsd.toFixed(2)} LP
+                            <span className="text-green-400 font-semibold"> (+${blazeProfitLoss.profitLoss.toFixed(2)})</span>
+                          </>
+                        ) : (
+                          <>
+                            Receive ${blazeProfitLoss.wethValueInUsd.toFixed(2)} WETH for ${blazeProfitLoss.lpValueInUsd.toFixed(2)} LP
+                            <span className="text-red-400 font-semibold"> (${blazeProfitLoss.profitLoss.toFixed(2)})</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+
+          {/* Action Button */}
+          <div className="mt-auto pt-3">
             <Button
-              className="w-full rounded-2xl bg-pink-500 py-3 text-base font-bold text-black shadow-lg transition-colors hover:bg-pink-400 disabled:cursor-not-allowed disabled:bg-pink-500/40"
+              className="w-full rounded-lg bg-cyan-500 py-3 text-sm font-bold text-black transition-all hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-cyan-500/40 disabled:text-black/50"
               onClick={handleBlaze}
               disabled={isBlazeDisabled}
             >
               {buttonLabel}
             </Button>
+          </div>
 
-            <div className="flex items-center justify-between px-1">
-              <div className="text-xs text-gray-400">
-                Available:{" "}
-                <span className="text-white font-semibold">
-                  {address && auctionState?.paymentTokenBalance
-                    ? formatEth(auctionState.paymentTokenBalance, 4)
-                    : "0"}
-                </span>{" "}
-                DONUT-ETH LP
+          {/* How It Works */}
+          <div className="mt-4 pt-3 border-t border-zinc-800">
+            <details className="group">
+              <summary className="cursor-pointer text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-cyan-400 transition-colors list-none flex items-center justify-between">
+                <span>How Blazernomics Works</span>
+                <span className="text-cyan-400 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-3 space-y-2 text-[11px] text-gray-400 leading-relaxed">
+                <p>
+                  <span className="text-cyan-400 font-semibold">Dutch Auction:</span> Price starts high and decays to 0 over one hour, then resets after each purchase.
+                </p>
+                <p>
+                  <span className="text-cyan-400 font-semibold">Burn Mechanism:</span> LP tokens are burned, removing liquidity permanently and increasing DONUT scarcity.
+                </p>
+                <p>
+                  <span className="text-cyan-400 font-semibold">Rewards:</span> Accumulated WETH from treasury flows to participants who blaze LP tokens.
+                </p>
+                <p>
+                  <span className="text-cyan-400 font-semibold">Strategy:</span> Time your blaze when WETH rewards exceed LP token value for profitable trades.
+                </p>
               </div>
-              <a
-                href="https://app.uniswap.org/explore/pools/base/0xD1DbB2E56533C55C3A637D13C53aeEf65c5D5703"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-pink-400 hover:text-pink-300 font-semibold transition-colors"
-              >
-                Get LP →
-              </a>
-            </div>
-
-            {/* Profit/Loss Warning Message */}
-            {blazeProfitLoss && (
-              <div className={cn(
-                "text-center text-sm font-semibold px-2 py-1.5 rounded",
-                blazeProfitLoss.isProfitable ? "text-green-400" : "text-red-400"
-              )}>
-                {blazeProfitLoss.isProfitable ? (
-                  <>
-                    💰 Profitable blaze! You'll receive ${blazeProfitLoss.wethValueInUsd.toFixed(2)} in WETH for ${blazeProfitLoss.lpValueInUsd.toFixed(2)} in LP
-                    ({blazeProfitLoss.profitLoss >= 0 ? '+' : ''}${blazeProfitLoss.profitLoss.toFixed(2)})
-                  </>
-                ) : (
-                  <>
-                    ⚠️ Unprofitable blaze! You'll receive ${blazeProfitLoss.wethValueInUsd.toFixed(2)} in WETH for ${blazeProfitLoss.lpValueInUsd.toFixed(2)} in LP
-                    (${blazeProfitLoss.profitLoss.toFixed(2)})
-                  </>
-                )}
-              </div>
-            )}
+            </details>
           </div>
         </div>
       </div>

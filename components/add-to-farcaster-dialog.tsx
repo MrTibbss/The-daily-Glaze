@@ -20,7 +20,7 @@ type AddToFarcasterDialogProps = {
 
 export function AddToFarcasterDialog({
   showOnFirstVisit = true,
-  storageKey = "glazecorp-add-miniapp-prompt-shown",
+  storageKey = "thedailyglaze-add-miniapp-prompt-shown",
 }: AddToFarcasterDialogProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "adding" | "success" | "error">(
@@ -132,10 +132,10 @@ export function AddToFarcasterDialog({
 
           {/* Icon */}
           <div className="mb-4 flex justify-center">
-            <div className="rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 p-4">
+            <div className="rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 p-4">
               <img
                 src="/media/icon.png"
-                alt="GlazeCorp"
+                alt="The Daily Glaze"
                 className="h-16 w-16"
               />
             </div>
@@ -144,7 +144,7 @@ export function AddToFarcasterDialog({
           {/* Content */}
           <div className="mb-6 text-center">
             <h2 className="mb-2 text-2xl font-bold text-white">
-              Add GlazeCorp
+              Add The Daily Glaze
             </h2>
             <p className="text-sm text-gray-400">
               Install this Mini App to your Farcaster profile for quick access.
@@ -167,7 +167,7 @@ export function AddToFarcasterDialog({
               className={cn(
                 "w-full gap-2 rounded-xl py-6 text-base font-bold transition-all",
                 status === "idle" &&
-                  "bg-pink-500 hover:bg-pink-400 text-black",
+                  "bg-cyan-500 hover:bg-cyan-400 text-black",
                 status === "success" &&
                   "bg-green-600 hover:bg-green-600 text-white",
                 status === "error" && "bg-red-600 hover:bg-red-600 text-white"
@@ -210,17 +210,17 @@ export function AddToFarcasterDialog({
           </div>
 
           {/* Benefits list */}
-          <div className="mt-6 space-y-2 border-t border-zinc-800 pt-4">
+            <div className="mt-6 space-y-2 border-t border-zinc-800 pt-4">
             <div className="flex items-center gap-2 text-sm text-gray-400">
-              <div className="h-1.5 w-1.5 rounded-full bg-pink-500" />
+              <div className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
               <span>Quick access from your Farcaster apps</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-400">
-              <div className="h-1.5 w-1.5 rounded-full bg-pink-500" />
+              <div className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
               <span>Receive notifications about glaze activity</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-400">
-              <div className="h-1.5 w-1.5 rounded-full bg-pink-500" />
+              <div className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
               <span>Stay connected to the glazery</span>
             </div>
           </div>

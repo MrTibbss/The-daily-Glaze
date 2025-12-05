@@ -22,7 +22,7 @@ export function NavBar() {
           className={cn(
             "flex items-center justify-center p-3 transition-colors",
             pathname === "/blazery"
-              ? "text-pink-400"
+              ? "text-cyan-400"
               : "text-gray-400 hover:text-gray-300"
           )}
         >
@@ -34,14 +34,14 @@ export function NavBar() {
           className={cn(
             "flex items-center justify-center p-3 transition-colors",
             pathname === "/"
-              ? "text-pink-400"
+              ? "text-cyan-400"
               : "text-gray-400 hover:text-gray-300"
           )}
         >
           <div
             className={cn(
               "w-7 h-7 rounded-full border-[5px]",
-              pathname === "/" ? "border-pink-400" : "border-gray-400"
+              pathname === "/" ? "border-cyan-400" : "border-gray-400"
             )}
           />
         </Link>
@@ -51,7 +51,7 @@ export function NavBar() {
           className={cn(
             "flex items-center justify-center p-3 transition-colors",
             pathname === "/about"
-              ? "text-pink-400"
+              ? "text-cyan-400"
               : "text-gray-400 hover:text-gray-300"
           )}
         >

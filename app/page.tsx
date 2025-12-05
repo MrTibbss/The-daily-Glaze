@@ -631,12 +631,12 @@ export default function HomePage() {
 
           <Card
             className={cn(
-              "mt-2 border-zinc-800 bg-gradient-to-br from-zinc-950 to-black transition-shadow rounded-xl",
+              "mt-2 border-zinc-700/50 bg-black transition-shadow rounded-lg border-[1.5px]",
               occupantDisplay.isYou &&
-                "border-pink-500 shadow-[inset_0_0_24px_rgba(236,72,153,0.55)] animate-glow",
+                "border-cyan-500 shadow-[inset_0_0_24px_rgba(34,211,238,0.55)] animate-glow",
             )}
           >
-            <div className="px-2.5 py-2.5 flex items-center justify-between gap-3">
+            <div className="px-2 py-2 flex items-center justify-between gap-2">
               {/* Left Section: Title + Profile */}
               <div className="flex flex-col gap-1 min-w-0 flex-1">
                 {/* King Glazer Title */}
@@ -644,7 +644,7 @@ export default function HomePage() {
                   className={cn(
                     "text-[9px] font-bold uppercase tracking-[0.1em]",
                     occupantDisplay.isYou
-                      ? "text-pink-400"
+                      ? "text-cyan-400"
                       : "text-gray-400",
                   )}
                 >
@@ -687,7 +687,7 @@ export default function HomePage() {
               </div>
 
               {/* Stats Section - Glazed and PNL stacked */}
-              <div className="flex flex-col gap-0.5 flex-shrink-0">
+              <div className="flex flex-col gap-0 flex-shrink-0">
                 {/* Time Row */}
                 <div className="flex items-center gap-1.5">
                   <div className="text-[8px] font-bold uppercase tracking-[0.08em] text-gray-400 w-10 text-right">
@@ -765,8 +765,8 @@ export default function HomePage() {
             </div>
           </Card>
 
-          <div className="relative mt-1 overflow-hidden bg-black">
-            <div className="flex animate-scroll whitespace-nowrap py-1 text-sm font-bold text-pink-500">
+            <div className="relative mt-1 overflow-hidden bg-black">
+            <div className="flex animate-scroll whitespace-nowrap py-1 text-sm font-bold text-cyan-500">
               {Array.from({ length: 1000 }).map((_, i) => (
                 <span key={i} className="inline-block px-8">
                   {minerState?.uri && minerState.uri.trim() !== ""
@@ -790,9 +790,9 @@ export default function HomePage() {
           </div>
 
           <div className="mt-2 flex flex-col gap-2 pb-2">
-            <div className="grid grid-cols-2 gap-2">
-              <Card className="border-zinc-800 bg-black">
-                <CardContent className="grid gap-1.5 p-2.5">
+            <div className="grid grid-cols-2 gap-1.5">
+              <Card className="border-zinc-700/50">
+                <CardContent className="grid gap-1 p-2">
                   <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-gray-400">
                     GLAZE RATE
                   </div>
@@ -810,7 +810,7 @@ export default function HomePage() {
                   <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-gray-400">
                     GLAZE PRICE
                   </div>
-                  <div className="text-2xl font-semibold text-pink-400">
+                  <div className="text-2xl font-semibold text-cyan-400">
                     {glazePriceDisplay}
                   </div>
                   <div className="text-xs text-gray-400 -mt-1">
@@ -831,12 +831,12 @@ export default function HomePage() {
               onChange={(e) => setCustomMessage(e.target.value)}
               placeholder="Add a message (optional)"
               maxLength={100}
-              className="w-full rounded-lg border border-zinc-800 bg-black px-3 py-2 text-sm font-mono text-white placeholder-gray-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
+              className="w-full rounded-md border border-cyan-600/20 bg-black px-2.5 py-1.5 text-xs font-mono text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 disabled:cursor-not-allowed disabled:opacity-40 transition-colors"
               disabled={isGlazeDisabled}
             />
 
             <Button
-              className="w-full rounded-2xl bg-pink-500 py-3 text-base font-bold text-black shadow-lg transition-colors hover:bg-pink-400 disabled:cursor-not-allowed disabled:bg-pink-500/40"
+              className="w-full rounded-2xl bg-cyan-500 py-3 text-base font-bold text-black shadow-lg transition-colors hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-cyan-500/40"
               onClick={handleGlaze}
               disabled={isGlazeDisabled}
             >
