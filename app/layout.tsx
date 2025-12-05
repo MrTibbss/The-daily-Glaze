@@ -22,7 +22,7 @@ const miniAppEmbed = {
 };
 
 export const metadata: Metadata = {
-  title: "We Glaze The World",
+  title: "The Daily Glaze",
   description: "Claim the glaze factory and earn donuts on Base.",
   openGraph: {
     title: "The Daily Glaze",
